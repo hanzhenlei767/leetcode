@@ -8,3 +8,4 @@ class Solution:
         for i in nums:
             res ^= i
         return res
+    
