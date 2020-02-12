@@ -1,3 +1,4 @@
+'''
 解题思路：
 
 题目只给了 要删除的节点(非末尾)    
@@ -7,7 +8,7 @@
 由于没有办法得到node的前节点，
 
 我们只能通过将  下一个节点的值  复制到  当前节点node，然后移除node的下一个节点来达到目的。
-
+'''
 
 # Definition for singly-linked list.
 # class ListNode:
