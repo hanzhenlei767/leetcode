@@ -1,54 +1,28 @@
-class Solution:
+'''
+给定一个未排序的整数数组，找出最长连续序列的长度。
+
+要求算法的时间复杂度为 O(n)。
+
+示例:
+
+输入: [100, 4, 200, 1, 3, 2]
+输出: 4
+解释: 最长连续序列是 [1, 2, 3, 4]。它的长度为 4。
+'''
+
+class Solution(object):
     def longestConsecutive(self, nums):
         """
         :type nums: List[int]
         :rtype: int
         """
-        if nums == []:
-            return 0
-        hash_dict = []
-        
-        def find_value(value,nums,d):
-            if d == 0:#小方向
-                if (value-1) in nums:
-                    return True
-                else:
-                    return False
-            else:#大方向
-                if (value+1) in nums:
-                    return True
-                else:
-                    return False
-
-        def find_min_max_longest(nums,i):
-            
-            hash_dict.append(nums[i])
-            
-            longest_num = 1
-            
-            tmp = nums[i] 
-            down = find_value(tmp,nums,0)
-            while(down == True):
-                hash_dict.append(tmp-1)
-                longest_num = longest_num+1
-                tmp = tmp-1
-                down = find_value(tmp,nums,0)
-                
-            temp = nums[i]
-            up = find_value(temp,nums,1)
-            while(up == True):
-                hash_dict.append(temp+1)
-                longest_num = longest_num+1
-                temp = temp+1
-                up = find_value(temp,nums,1)
-            return longest_num
-        
-        i = 0
-        longest = find_min_max_longest(nums,i)
-        for i in range(1,len(nums)):
-            if nums[i] not in hash_dict:
-                tmp_longest = find_min_max_longest(nums,i)
-                if tmp_longest > longest:
-                    longest = tmp_longest
-        return longest
+        nums = set(nums)
+        res = 0
+        for i in nums:
+            if i-1 not in nums:#找到最小值
+                y = i +1
+                while y in nums:
+                    y += 1
+                res = max(res, y - i)
+        return res
             

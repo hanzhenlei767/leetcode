@@ -35,11 +35,11 @@ class Solution(object):
         if len(prices) < 2:
             return 0
         dp = [[0]*len(prices) for i in range(2)]
-        dp[0][0] = 0
-        dp[1][0] = -prices[0]
-        for i in range(1,len(prices)):
-            dp[0][i] = max(dp[0][i - 1], dp[1][i - 1] + prices[i]);
-            dp[1][i] = max(dp[1][i - 1], dp[0][i - 1] - prices[i]);
+        dp[0][0] = 0 #第一天没买
+        dp[1][0] = -prices[0] #第一天买了
+        for i in range(1,len(prices)):#第一维表示有没有买
+            dp[0][i] = max(dp[0][i - 1], dp[1][i - 1] + prices[i]) #max(昨天没买今天也没买，昨天买了今天卖了)
+            dp[1][i] = max(dp[1][i - 1], dp[0][i - 1] - prices[i]) #max(昨天买了今天没买，昨天没买今天买了)
 
         return dp[0][len(prices)-1]
 
