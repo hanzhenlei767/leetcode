@@ -15,3 +15,4 @@ def countPrimes(n):
         if flag==1:
             num+=1
     return num
+    
