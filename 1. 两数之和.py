@@ -69,3 +69,44 @@ def twoSum(nums, target):
                 last = nums[left],nums[right]
             left = left + 1
     return last
+	
+	
+#给定正整数数组arr,以及一个正整数K,数组满足条件arr[i]>2*arr[i-1],判断数组中是否存在两个元素arr[m]+arr[n]=K,要求O(logn)
+
+def twoSum(arr, K):
+	low,high = 0,len(arr)-1
+	if len(arr)<2:
+		return -1,-1
+	if K>arr[-1]:
+		idx = len(arr)
+	else:
+		while low < high:
+			mid = (low+high)//2
+			if arr[mid] == K:
+				return -1,-1
+			elif arr[mid] > K:
+				high -= 1
+			else:
+				low += 1
+		idx = low
+	if idx < 2:
+		return -1,-1
+	K = K - arr[idx-1]
+	low,high = 0,idx -2
+	while low <= high:
+		mid = (low+high)//2
+		if arr[mid] == K:
+			return mid,idx-1
+		elif arr[mid] > K:
+			high -= 1
+		else:
+			low += 1
+	return -1,-1
+		
+		
+
+	
+	
+	
+	
+	
