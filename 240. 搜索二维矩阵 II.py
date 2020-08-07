@@ -19,6 +19,43 @@
 给定 target = 20，返回 false
 '''
 
+
+#思路1：
+#每行使用二分查找，仅利用了行有序。
+#思路2：
+#从右上角查起，若果target>元素，则row++；如果target<元素，则col--.
+#思路3：
+#思路1和思路2结合下
+
+
+#思路2：
+class Solution:
+    def searchMatrix(self, matrix, target):
+        """
+        :type matrix: List[List[int]]
+        :type target: int
+        :rtype: bool
+        """
+        if not matrix:
+            return False
+        rows = len(matrix)
+        cols = len(matrix[0])-1
+        row = 0
+        while row < rows and cols >= 0:
+            if matrix[row][cols] == target:
+                return True
+            elif matrix[row][cols] > target:
+                cols -= 1
+            else:
+                row += 1
+        return False
+
+
+
+
+
+
+
 class Solution:
     def searchMatrix(self, matrix, target):
         """
