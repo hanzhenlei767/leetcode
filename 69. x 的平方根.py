@@ -39,4 +39,4 @@ class Solution(object):
         # 因为一定存在，因此无需后处理
         return left
 
-
+  
