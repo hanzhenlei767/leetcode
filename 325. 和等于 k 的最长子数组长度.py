@@ -23,7 +23,7 @@ nums 数组的总和是一定在 32 位有符号整数范围之内的。
 '''
 #前缀和
 class Solution:
-    def maxSubArrayLen(self, nums: List[int], k: int) -> int:
+    def maxSubArrayLen(self, nums, k):
         lookup = {0: -1}
         cur = 0
         res = 0
@@ -31,6 +31,7 @@ class Solution:
             cur += val
             if cur - k in lookup:
                 res = max(res, idx - lookup[cur - k])
+                
             # 记录前面和的最小位置，所以说存在数值就不改变
             if cur not in lookup:
                 lookup[cur] = idx
