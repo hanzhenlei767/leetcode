@@ -24,12 +24,12 @@ nums 数组的总和是一定在 32 位有符号整数范围之内的。
 #前缀和
 class Solution:
     def maxSubArrayLen(self, nums, k):
-        lookup = {0: -1}
+        lookup = {0: -1}#记录数组中索引前面元素的和和对应的索引
         cur = 0
         res = 0
         for idx, val in enumerate(nums):
             cur += val
-            if cur - k in lookup:
+            if cur - k in lookup:#当前索引的和减去目标值 k，及数组前段的和。如果存在则说明中间段数组和为k.
                 res = max(res, idx - lookup[cur - k])
                 
             # 记录前面和的最小位置，所以说存在数值就不改变
