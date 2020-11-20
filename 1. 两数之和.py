@@ -47,7 +47,6 @@ class Solution(object):
 # 数组中两数之和等于target则返回两个数
 # 数组中不存在两数之和等于target则返回两个最接近target的数
 
-
 def twoSum(nums, target):
     nums.sort()
     print(nums)
@@ -71,7 +70,8 @@ def twoSum(nums, target):
     return last
 	
 	
-#给定正整数数组arr,以及一个正整数K,数组满足条件arr[i]>2*arr[i-1],判断数组中是否存在两个元素arr[m]+arr[n]=K,要求O(logn)
+#给定正整数数组arr,以及一个正整数K,数组满足条件arr[i]>2*arr[i-1],
+#判断数组中是否存在两个元素arr[m]+arr[n]=K,要求O(logn)
 
 def twoSum(arr, K):
 	low,high = 0,len(arr)-1
